@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsSnap Privacy Policy</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --link: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    h1 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+
+    h2 {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: var(--link);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1 id="title"></h1>
+    <p id="updated" class="updated"></p>
+
+    <h2 id="collectHeading"></h2>
+    <p id="collectBody"></p>
+
+    <h2 id="inputHeading"></h2>
+    <p id="inputBody"></p>
+
+    <h2 id="downloadHeading"></h2>
+    <p id="downloadBody"></p>
+
+    <h2 id="thirdPartyHeading"></h2>
+    <p id="thirdPartyBody"></p>
+
+    <h2 id="contactHeading"></h2>
+    <p id="contactBody"></p>
+  </main>
+
+  <script>
+    const policyByLang = {
+      "en": {
+        title: "InsSnap Privacy Policy",
+        updated: "Last updated: February 2026",
+        collectHeading: "Information We Collect",
+        collectBody: "InsSnap does not collect any personal information. The app does not require registration or login.",
+        inputHeading: "Content You Provide",
+        inputBody: "Instagram links you paste are sent to a third-party parsing service (RapidAPI) to obtain downloadable media URLs. We do not store these links or share them with any other party.",
+        downloadHeading: "Downloaded Files",
+        downloadBody: "All downloaded files are stored only on your local device, and we cannot access them.",
+        thirdPartyHeading: "Third-Party Services",
+        thirdPartyBody: "This app uses RapidAPI to parse Instagram content. Please review the RapidAPI Privacy Policy.",
+        contactHeading: "Contact Us",
+        contactBody: "If you have any questions, contact: your@email.com"
+      },
+      "zh-CN": {
+        title: "InsSnap 隐私政策",
+        updated: "最后更新：2026年2月",
+        collectHeading: "我们收集的信息",
+        collectBody: "InsSnap 不收集任何个人信息。应用无需注册或登录。",
+        inputHeading: "您输入的内容",
+        inputBody: "您粘贴的 Instagram 链接会发送至第三方解析服务（RapidAPI）以获取媒体下载地址。我们不存储这些链接，也不与任何其他方共享。",
+        downloadHeading: "下载的文件",
+        downloadBody: "所有下载文件仅保存在您的本地设备上，我们无法访问。",
+        thirdPartyHeading: "第三方服务",
+        thirdPartyBody: "本应用通过 RapidAPI 调用 Instagram 内容解析接口。请参阅 RapidAPI 隐私政策。",
+        contactHeading: "联系我们",
+        contactBody: "如有疑问，请联系：your@email.com"
+      },
+      "zh-TW": {
+        title: "InsSnap 隱私權政策",
+        updated: "最後更新：2026年2月",
+        collectHeading: "我們收集的資訊",
+        collectBody: "InsSnap 不會收集任何個人資訊。應用程式不需要註冊或登入。",
+        inputHeading: "您提供的內容",
+        inputBody: "您貼上的 Instagram 連結會傳送至第三方解析服務（RapidAPI）以取得可下載的媒體連結。我們不會儲存這些連結，也不會與任何其他方分享。",
+        downloadHeading: "下載的檔案",
+        downloadBody: "所有下載檔案僅儲存在您的本機裝置上，我們無法存取。",
+        thirdPartyHeading: "第三方服務",
+        thirdPartyBody: "本應用程式透過 RapidAPI 呼叫 Instagram 內容解析介面。請參閱 RapidAPI 隱私權政策。",
+        contactHeading: "聯絡我們",
+        contactBody: "若有任何疑問，請聯絡：your@email.com"
+      },
+      "pt": {
+        title: "Política de Privacidade do InsSnap",
+        updated: "Última atualização: fevereiro de 2026",
+        collectHeading: "Informações que Coletamos",
+        collectBody: "O InsSnap não coleta nenhuma informação pessoal. O aplicativo não exige cadastro nem login.",
+        inputHeading: "Conteúdo que Você Fornece",
+        inputBody: "Os links do Instagram que você cola são enviados para um serviço de análise de terceiros (RapidAPI) para obter URLs de mídia para download. Não armazenamos esses links nem os compartilhamos com terceiros.",
+        downloadHeading: "Arquivos Baixados",
+        downloadBody: "Todos os arquivos baixados ficam apenas no seu dispositivo local, e não podemos acessá-los.",
+        thirdPartyHeading: "Serviços de Terceiros",
+        thirdPartyBody: "Este aplicativo usa o RapidAPI para analisar conteúdo do Instagram. Consulte a Política de Privacidade da RapidAPI.",
+        contactHeading: "Fale Conosco",
+        contactBody: "Se tiver dúvidas, entre em contato: your@email.com"
+      },
+      "id": {
+        title: "Kebijakan Privasi InsSnap",
+        updated: "Terakhir diperbarui: Februari 2026",
+        collectHeading: "Informasi yang Kami Kumpulkan",
+        collectBody: "InsSnap tidak mengumpulkan informasi pribadi apa pun. Aplikasi tidak memerlukan pendaftaran atau login.",
+        inputHeading: "Konten yang Anda Berikan",
+        inputBody: "Tautan Instagram yang Anda tempel dikirim ke layanan parsing pihak ketiga (RapidAPI) untuk mendapatkan URL media yang dapat diunduh. Kami tidak menyimpan tautan tersebut atau membagikannya ke pihak lain.",
+        downloadHeading: "File yang Diunduh",
+        downloadBody: "Semua file yang diunduh hanya disimpan di perangkat lokal Anda, dan kami tidak dapat mengaksesnya.",
+        thirdPartyHeading: "Layanan Pihak Ketiga",
+        thirdPartyBody: "Aplikasi ini menggunakan RapidAPI untuk memproses konten Instagram. Silakan lihat Kebijakan Privasi RapidAPI.",
+        contactHeading: "Hubungi Kami",
+        contactBody: "Jika ada pertanyaan, hubungi: your@email.com"
+      },
+      "es": {
+        title: "Política de Privacidad de InsSnap",
+        updated: "Última actualización: febrero de 2026",
+        collectHeading: "Información que Recopilamos",
+        collectBody: "InsSnap no recopila información personal. La aplicación no requiere registro ni inicio de sesión.",
+        inputHeading: "Contenido que Proporcionas",
+        inputBody: "Los enlaces de Instagram que pegas se envían a un servicio de análisis de terceros (RapidAPI) para obtener URLs de medios descargables. No almacenamos estos enlaces ni los compartimos con terceros.",
+        downloadHeading: "Archivos Descargados",
+        downloadBody: "Todos los archivos descargados se guardan solo en tu dispositivo local y no podemos acceder a ellos.",
+        thirdPartyHeading: "Servicios de Terceros",
+        thirdPartyBody: "Esta aplicación usa RapidAPI para analizar contenido de Instagram. Consulta la Política de Privacidad de RapidAPI.",
+        contactHeading: "Contáctanos",
+        contactBody: "Si tienes preguntas, contacta a: your@email.com"
+      },
+      "hi": {
+        title: "InsSnap गोपनीयता नीति",
+        updated: "अंतिम अपडेट: फ़रवरी 2026",
+        collectHeading: "हम कौन सी जानकारी एकत्र करते हैं",
+        collectBody: "InsSnap कोई व्यक्तिगत जानकारी एकत्र नहीं करता है। ऐप में रजिस्ट्रेशन या लॉगिन की आवश्यकता नहीं है।",
+        inputHeading: "आपके द्वारा प्रदान की गई सामग्री",
+        inputBody: "आपके द्वारा पेस्ट किए गए Instagram लिंक मीडिया डाउनलोड URL प्राप्त करने के लिए तृतीय-पक्ष पार्सिंग सेवा (RapidAPI) को भेजे जाते हैं। हम इन लिंक को संग्रहीत नहीं करते और न ही किसी अन्य पक्ष के साथ साझा करते हैं।",
+        downloadHeading: "डाउनलोड की गई फाइलें",
+        downloadBody: "सभी डाउनलोड की गई फाइलें केवल आपके स्थानीय डिवाइस पर सहेजी जाती हैं, और हम उन्हें एक्सेस नहीं कर सकते।",
+        thirdPartyHeading: "तृतीय-पक्ष सेवाएं",
+        thirdPartyBody: "यह ऐप Instagram सामग्री पार्स करने के लिए RapidAPI का उपयोग करता है। कृपया RapidAPI की गोपनीयता नीति देखें।",
+        contactHeading: "संपर्क करें",
+        contactBody: "यदि आपके कोई प्रश्न हैं, तो संपर्क करें: your@email.com"
+      },
+      "ja": {
+        title: "InsSnap プライバシーポリシー",
+        updated: "最終更新日: 2026年2月",
+        collectHeading: "収集する情報",
+        collectBody: "InsSnap は個人情報を一切収集しません。アプリの登録やログインは不要です。",
+        inputHeading: "入力された内容",
+        inputBody: "貼り付けた Instagram リンクは、ダウンロード可能なメディア URL を取得するために第三者解析サービス（RapidAPI）へ送信されます。これらのリンクを保存したり、他者と共有したりすることはありません。",
+        downloadHeading: "ダウンロードされたファイル",
+        downloadBody: "ダウンロードされたファイルはすべて端末内にのみ保存され、当社はアクセスできません。",
+        thirdPartyHeading: "第三者サービス",
+        thirdPartyBody: "本アプリは Instagram コンテンツ解析のために RapidAPI を利用します。RapidAPI のプライバシーポリシーをご確認ください。",
+        contactHeading: "お問い合わせ",
+        contactBody: "ご質問がある場合: your@email.com"
+      },
+      "ar": {
+        title: "سياسة خصوصية InsSnap",
+        updated: "آخر تحديث: فبراير 2026",
+        collectHeading: "المعلومات التي نجمعها",
+        collectBody: "لا يجمع InsSnap أي معلومات شخصية. لا يتطلب التطبيق التسجيل أو تسجيل الدخول.",
+        inputHeading: "المحتوى الذي تقدمه",
+        inputBody: "يتم إرسال روابط Instagram التي تلصقها إلى خدمة تحليل تابعة لجهة خارجية (RapidAPI) للحصول على روابط وسائط قابلة للتنزيل. نحن لا نخزن هذه الروابط ولا نشاركها مع أي طرف آخر.",
+        downloadHeading: "الملفات التي تم تنزيلها",
+        downloadBody: "يتم حفظ جميع الملفات التي تم تنزيلها على جهازك المحلي فقط، ولا يمكننا الوصول إليها.",
+        thirdPartyHeading: "خدمات الطرف الثالث",
+        thirdPartyBody: "يستخدم هذا التطبيق RapidAPI لتحليل محتوى Instagram. يرجى مراجعة سياسة خصوصية RapidAPI.",
+        contactHeading: "اتصل بنا",
+        contactBody: "إذا كانت لديك أي أسئلة، تواصل معنا: your@email.com"
+      },
+      "tr": {
+        title: "InsSnap Gizlilik Politikasi",
+        updated: "Son guncelleme: Subat 2026",
+        collectHeading: "Topladigimiz Bilgiler",
+        collectBody: "InsSnap herhangi bir kisisel bilgi toplamaz. Uygulama kayit veya giris gerektirmez.",
+        inputHeading: "Sagladiginiz Icerik",
+        inputBody: "Yapistirdiginiz Instagram baglantilari, indirilebilir medya URL'lerini almak icin ucuncu taraf bir ayrisma hizmetine (RapidAPI) gonderilir. Bu baglantilari saklamaz veya baska taraflarla paylasmayiz.",
+        downloadHeading: "Indirilen Dosyalar",
+        downloadBody: "Indirilen tum dosyalar yalnizca yerel cihazinizda saklanir ve bunlara erisemeyiz.",
+        thirdPartyHeading: "Ucuncu Taraf Hizmetleri",
+        thirdPartyBody: "Bu uygulama, Instagram icerigini ayrismak icin RapidAPI kullanir. Lutfen RapidAPI Gizlilik Politikasini inceleyin.",
+        contactHeading: "Bize Ulasin",
+        contactBody: "Sorulariniz icin: your@email.com"
+      }
+    };
+
+    function getLangFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      const rawLang = params.get("lang");
+      if (!rawLang) {
+        return "en";
+      }
+
+      const normalized = rawLang.trim().replace(/_/g, "-");
+      if (policyByLang[normalized]) {
+        return normalized;
+      }
+
+      const aliasByLowercase = {
+        "zh-cn": "zh-CN",
+        "zh-tw": "zh-TW"
+      };
+
+      const lower = normalized.toLowerCase();
+      if (aliasByLowercase[lower]) {
+        return aliasByLowercase[lower];
+      }
+
+      for (const key of Object.keys(policyByLang)) {
+        if (key.toLowerCase() === lower) {
+          return key;
+        }
+      }
+
+      return "en";
+    }
+
+    function setNodeText(id, value) {
+      const node = document.getElementById(id);
+      if (node) {
+        node.textContent = value;
+      }
+    }
+
+    function renderPolicy() {
+      const lang = getLangFromQuery();
+      const policy = policyByLang[lang];
+
+      document.documentElement.lang = lang;
+      document.title = policy.title;
+
+      setNodeText("title", policy.title);
+      setNodeText("updated", policy.updated);
+      setNodeText("collectHeading", policy.collectHeading);
+      setNodeText("collectBody", policy.collectBody);
+      setNodeText("inputHeading", policy.inputHeading);
+      setNodeText("inputBody", policy.inputBody);
+      setNodeText("downloadHeading", policy.downloadHeading);
+      setNodeText("downloadBody", policy.downloadBody);
+      setNodeText("thirdPartyHeading", policy.thirdPartyHeading);
+      setNodeText("contactHeading", policy.contactHeading);
+      setNodeText("contactBody", policy.contactBody);
+
+      const thirdPartyNode = document.getElementById("thirdPartyBody");
+      if (thirdPartyNode) {
+        thirdPartyNode.innerHTML =
+          policy.thirdPartyBody +
+          ' <a href="https://rapidapi.com/privacy" target="_blank" rel="noopener noreferrer">RapidAPI Privacy Policy</a>.';
+      }
+    }
+
+    renderPolicy();
+  </script>
+</body>
+</html>
