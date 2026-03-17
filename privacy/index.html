@@ -51,6 +51,15 @@
       margin: 0 0 12px;
     }
 
+    ul {
+      margin: 0 0 12px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
     .updated {
       color: var(--muted);
       margin-bottom: 16px;
@@ -75,8 +84,29 @@
     <h2 id="downloadHeading"></h2>
     <p id="downloadBody"></p>
 
+    <h2 id="analyticsHeading"></h2>
+    <p id="analyticsBody"></p>
+
+    <h2 id="adIdHeading"></h2>
+    <p id="adIdBody"></p>
+
     <h2 id="thirdPartyHeading"></h2>
     <p id="thirdPartyBody"></p>
+
+    <h2 id="securityHeading"></h2>
+    <p id="securityBody"></p>
+
+    <h2 id="dataRetentionHeading"></h2>
+    <p id="dataRetentionBody"></p>
+
+    <h2 id="userRightsHeading"></h2>
+    <div id="userRightsBody"></div>
+
+    <h2 id="childrenHeading"></h2>
+    <p id="childrenBody"></p>
+
+    <h2 id="changesHeading"></h2>
+    <p id="changesBody"></p>
 
     <h2 id="contactHeading"></h2>
     <p id="contactBody"></p>
@@ -86,157 +116,465 @@
     const policyByLang = {
       "en": {
         title: "InsSnap Privacy Policy",
-        updated: "Last updated: February 2026",
+        updated: "Last updated: March 2026",
         collectHeading: "Information We Collect",
-        collectBody: "InsSnap does not collect any personal information. The app does not require registration or login.",
+        collectBody: "InsSnap does not collect any personally identifiable information (such as name, email, or phone number). The app does not require registration or login. However, we use Firebase Analytics to collect anonymous usage data (see the \"Analytics & Crash Reporting\" section below for details).",
         inputHeading: "Content You Provide",
-        inputBody: "Instagram links you paste are sent to a third-party parsing service (RapidAPI) to obtain downloadable media URLs. We do not store these links or share them with any other party.",
+        inputBody: "Instagram links you paste are sent to a third-party parsing service (RapidAPI) to obtain downloadable media URLs. We do not store these links on our servers or share them with any other party.",
         downloadHeading: "Downloaded Files",
         downloadBody: "All downloaded files are stored only on your local device, and we cannot access them.",
+        analyticsHeading: "Analytics & Crash Reporting",
+        analyticsBody: "We use Firebase Analytics and Firebase Crashlytics to help improve app quality. These services collect anonymous data including: app usage events (such as button clicks and feature usage frequency), device information (device model, OS version, language settings), and crash logs and error reports. This data is anonymous and cannot be used to identify you personally. You can limit data collection by disabling \"Usage & diagnostics\" in your Android device settings.",
+        adIdHeading: "Advertising Identifier",
+        adIdBody: "The app may access your device's advertising identifier (Google Advertising ID) for analytics attribution purposes. This identifier does not collect your personal information. You can reset or disable your advertising ID at any time in your device's Settings > Google > Ads.",
         thirdPartyHeading: "Third-Party Services",
-        thirdPartyBody: "This app uses RapidAPI to parse Instagram content. Please review the RapidAPI Privacy Policy.",
+        thirdPartyBody: "This app uses the following third-party services, each with their own privacy policies:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "for parsing Instagram content", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "for anonymous usage analytics", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "for crash reporting", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "Data Security",
+        securityBody: "We take data security seriously. All network communications use HTTPS encryption. Downloaded files are stored in your device's local storage. The app does not back up user data to cloud services (android:allowBackup is disabled).",
+        dataRetentionHeading: "Data Retention & Deletion",
+        dataRetentionBody: "Local data (download history, cached thumbnails) is stored only on your device. You can delete it at any time by clearing the app's data in system settings or by uninstalling the app. Anonymous analytics data collected by Firebase is retained for 14 months (Google's default retention period), after which it is automatically deleted.",
+        userRightsHeading: "Your Rights",
+        userRightsIntro: "Under applicable data protection laws (including GDPR for EU/EEA users), you may have the following rights:",
+        userRightsList: [
+          "Right of access — request a copy of data we hold about you",
+          "Right to deletion — request deletion of your data",
+          "Right to rectification — request correction of inaccurate data",
+          "Right to restrict processing — request that we limit data processing",
+          "Right to data portability — request your data in a portable format",
+          "Right to withdraw consent — withdraw your consent at any time"
+        ],
+        userRightsOutro: "To exercise any of these rights, please contact us at the email address listed below. We will respond within 30 days.",
+        childrenHeading: "Children's Privacy",
+        childrenBody: "InsSnap is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will take steps to delete such information.",
+        changesHeading: "Changes to This Policy",
+        changesBody: "We may update this privacy policy from time to time. When we make changes, we will update the \"Last updated\" date at the top of this page. We encourage you to review this policy periodically to stay informed about how we protect your information.",
         contactHeading: "Contact Us",
-        contactBody: "If you have any questions, contact: inna.roseli@outlook.com"
+        contactBody: "If you have any questions or concerns about this privacy policy, contact us at: inna.roseli@outlook.com"
       },
       "zh-CN": {
         title: "InsSnap 隐私政策",
-        updated: "最后更新：2026年2月",
+        updated: "最后更新：2026年3月",
         collectHeading: "我们收集的信息",
-        collectBody: "InsSnap 不收集任何个人信息。应用无需注册或登录。",
+        collectBody: "InsSnap 不收集任何个人身份信息（如姓名、邮箱、电话号码）。应用无需注册或登录。但我们使用 Firebase Analytics 收集匿名使用数据（详见下方「分析与崩溃报告」章节）。",
         inputHeading: "您输入的内容",
-        inputBody: "您粘贴的 Instagram 链接会发送至第三方解析服务（RapidAPI）以获取媒体下载地址。我们不存储这些链接，也不与任何其他方共享。",
+        inputBody: "您粘贴的 Instagram 链接会发送至第三方解析服务（RapidAPI）以获取媒体下载地址。我们不会在服务器上存储这些链接，也不与任何其他方共享。",
         downloadHeading: "下载的文件",
         downloadBody: "所有下载文件仅保存在您的本地设备上，我们无法访问。",
+        analyticsHeading: "分析与崩溃报告",
+        analyticsBody: "我们使用 Firebase Analytics 和 Firebase Crashlytics 来改善应用质量。这些服务收集的匿名数据包括：应用使用事件（如按钮点击和功能使用频率）、设备信息（设备型号、操作系统版本、语言设置）以及崩溃日志和错误报告。这些数据是匿名的，无法用于识别您的个人身份。您可以在 Android 设备设置中关闭「使用情况和诊断」来限制数据收集。",
+        adIdHeading: "广告标识符",
+        adIdBody: "本应用可能会访问您设备的广告标识符（Google 广告 ID），仅用于分析归因。该标识符不会收集您的个人信息。您可以随时在设备的 设置 > Google > 广告 中重置或关闭广告 ID。",
         thirdPartyHeading: "第三方服务",
-        thirdPartyBody: "本应用通过 RapidAPI 调用 Instagram 内容解析接口。请参阅 RapidAPI 隐私政策。",
+        thirdPartyBody: "本应用使用以下第三方服务，各有其独立的隐私政策：",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "用于解析 Instagram 内容", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "用于匿名使用分析", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "用于崩溃报告", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "数据安全",
+        securityBody: "我们重视数据安全。所有网络通信均使用 HTTPS 加密。下载文件存储在您设备的本地存储中。应用不会将用户数据备份到云服务（已禁用 android:allowBackup）。",
+        dataRetentionHeading: "数据保留与删除",
+        dataRetentionBody: "本地数据（下载历史、缓存缩略图）仅存储在您的设备上。您可以随时通过在系统设置中清除应用数据或卸载应用来删除。Firebase 收集的匿名分析数据保留 14 个月（Google 默认保留期限），之后自动删除。",
+        userRightsHeading: "您的权利",
+        userRightsIntro: "根据适用的数据保护法律（包括适用于欧盟/欧洲经济区用户的 GDPR），您可能享有以下权利：",
+        userRightsList: [
+          "访问权 — 要求获取我们持有的关于您的数据副本",
+          "删除权 — 要求删除您的数据",
+          "更正权 — 要求更正不准确的数据",
+          "限制处理权 — 要求限制数据处理",
+          "数据可携带权 — 要求以可移植格式获取您的数据",
+          "撤回同意权 — 随时撤回您的同意"
+        ],
+        userRightsOutro: "如需行使上述权利，请通过下方邮箱联系我们，我们将在 30 天内回复。",
+        childrenHeading: "儿童隐私",
+        childrenBody: "InsSnap 不面向 13 岁以下儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果您是家长或监护人，认为您的孩子向我们提供了个人信息，请联系我们，我们将采取措施删除该信息。",
+        changesHeading: "政策变更",
+        changesBody: "我们可能会不时更新本隐私政策。变更时，我们会更新页面顶部的「最后更新」日期。建议您定期查看本政策，了解我们如何保护您的信息。",
         contactHeading: "联系我们",
-        contactBody: "如有疑问，请联系：inna.roseli@outlook.com"
+        contactBody: "如果您对本隐私政策有任何疑问或意见，请联系：inna.roseli@outlook.com"
       },
       "zh-TW": {
         title: "InsSnap 隱私權政策",
-        updated: "最後更新：2026年2月",
+        updated: "最後更新：2026年3月",
         collectHeading: "我們收集的資訊",
-        collectBody: "InsSnap 不會收集任何個人資訊。應用程式不需要註冊或登入。",
+        collectBody: "InsSnap 不會收集任何個人身份資訊（如姓名、電子郵件、電話號碼）。應用程式不需要註冊或登入。但我們使用 Firebase Analytics 收集匿名使用資料（詳見下方「分析與當機報告」章節）。",
         inputHeading: "您提供的內容",
-        inputBody: "您貼上的 Instagram 連結會傳送至第三方解析服務（RapidAPI）以取得可下載的媒體連結。我們不會儲存這些連結，也不會與任何其他方分享。",
+        inputBody: "您貼上的 Instagram 連結會傳送至第三方解析服務（RapidAPI）以取得可下載的媒體連結。我們不會在伺服器上儲存這些連結，也不會與任何其他方分享。",
         downloadHeading: "下載的檔案",
         downloadBody: "所有下載檔案僅儲存在您的本機裝置上，我們無法存取。",
+        analyticsHeading: "分析與當機報告",
+        analyticsBody: "我們使用 Firebase Analytics 和 Firebase Crashlytics 來改善應用程式品質。這些服務收集的匿名資料包括：應用程式使用事件（如按鈕點擊和功能使用頻率）、裝置資訊（裝置型號、作業系統版本、語言設定）以及當機記錄和錯誤報告。這些資料是匿名的，無法用於識別您的個人身份。您可以在 Android 裝置設定中關閉「使用情形與診斷」來限制資料收集。",
+        adIdHeading: "廣告識別碼",
+        adIdBody: "本應用程式可能會存取您裝置的廣告識別碼（Google 廣告 ID），僅用於分析歸因。該識別碼不會收集您的個人資訊。您可以隨時在裝置的 設定 > Google > 廣告 中重設或關閉廣告 ID。",
         thirdPartyHeading: "第三方服務",
-        thirdPartyBody: "本應用程式透過 RapidAPI 呼叫 Instagram 內容解析介面。請參閱 RapidAPI 隱私權政策。",
+        thirdPartyBody: "本應用程式使用以下第三方服務，各有其獨立的隱私權政策：",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "用於解析 Instagram 內容", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "用於匿名使用分析", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "用於當機報告", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "資料安全",
+        securityBody: "我們重視資料安全。所有網路通訊均使用 HTTPS 加密。下載檔案儲存在您裝置的本機儲存空間中。應用程式不會將使用者資料備份到雲端服務（已停用 android:allowBackup）。",
+        dataRetentionHeading: "資料保留與刪除",
+        dataRetentionBody: "本機資料（下載紀錄、快取縮圖）僅儲存在您的裝置上。您可以隨時透過在系統設定中清除應用程式資料或解除安裝來刪除。Firebase 收集的匿名分析資料保留 14 個月（Google 預設保留期限），之後自動刪除。",
+        userRightsHeading: "您的權利",
+        userRightsIntro: "根據適用的資料保護法律（包括適用於歐盟/歐洲經濟區使用者的 GDPR），您可能享有以下權利：",
+        userRightsList: [
+          "存取權 — 要求取得我們持有的關於您的資料副本",
+          "刪除權 — 要求刪除您的資料",
+          "更正權 — 要求更正不準確的資料",
+          "限制處理權 — 要求限制資料處理",
+          "資料可攜權 — 要求以可攜帶格式取得您的資料",
+          "撤回同意權 — 隨時撤回您的同意"
+        ],
+        userRightsOutro: "如需行使上述權利，請透過下方電子郵件聯絡我們，我們將在 30 天內回覆。",
+        childrenHeading: "兒童隱私",
+        childrenBody: "InsSnap 不面向 13 歲以下兒童。我們不會故意收集 13 歲以下兒童的個人資訊。如果您是家長或監護人，認為您的孩子向我們提供了個人資訊，請聯絡我們，我們將採取措施刪除該資訊。",
+        changesHeading: "政策變更",
+        changesBody: "我們可能會不時更新本隱私權政策。變更時，我們會更新頁面頂部的「最後更新」日期。建議您定期查看本政策，了解我們如何保護您的資訊。",
         contactHeading: "聯絡我們",
-        contactBody: "若有任何疑問，請聯絡：inna.roseli@outlook.com"
+        contactBody: "若對本隱私權政策有任何疑問或意見，請聯絡：inna.roseli@outlook.com"
       },
       "pt": {
         title: "Política de Privacidade do InsSnap",
-        updated: "Última atualização: fevereiro de 2026",
+        updated: "Última atualização: março de 2026",
         collectHeading: "Informações que Coletamos",
-        collectBody: "O InsSnap não coleta nenhuma informação pessoal. O aplicativo não exige cadastro nem login.",
+        collectBody: "O InsSnap não coleta nenhuma informação de identificação pessoal (como nome, e-mail ou número de telefone). O aplicativo não exige cadastro nem login. No entanto, utilizamos o Firebase Analytics para coletar dados de uso anônimos (veja a seção \"Análise e Relatórios de Falhas\" abaixo).",
         inputHeading: "Conteúdo que Você Fornece",
-        inputBody: "Os links do Instagram que você cola são enviados para um serviço de análise de terceiros (RapidAPI) para obter URLs de mídia para download. Não armazenamos esses links nem os compartilhamos com terceiros.",
+        inputBody: "Os links do Instagram que você cola são enviados para um serviço de análise de terceiros (RapidAPI) para obter URLs de mídia para download. Não armazenamos esses links em nossos servidores nem os compartilhamos com terceiros.",
         downloadHeading: "Arquivos Baixados",
         downloadBody: "Todos os arquivos baixados ficam apenas no seu dispositivo local, e não podemos acessá-los.",
+        analyticsHeading: "Análise e Relatórios de Falhas",
+        analyticsBody: "Utilizamos o Firebase Analytics e o Firebase Crashlytics para melhorar a qualidade do aplicativo. Esses serviços coletam dados anônimos, incluindo: eventos de uso do aplicativo (como cliques em botões e frequência de uso de recursos), informações do dispositivo (modelo, versão do SO, configurações de idioma) e logs de falhas e relatórios de erros. Esses dados são anônimos e não podem ser usados para identificá-lo. Você pode limitar a coleta de dados desativando \"Uso e diagnóstico\" nas configurações do seu dispositivo Android.",
+        adIdHeading: "Identificador de Publicidade",
+        adIdBody: "O aplicativo pode acessar o identificador de publicidade do seu dispositivo (Google Advertising ID) para fins de atribuição analítica. Este identificador não coleta suas informações pessoais. Você pode redefinir ou desativar seu ID de publicidade a qualquer momento em Configurações > Google > Anúncios.",
         thirdPartyHeading: "Serviços de Terceiros",
-        thirdPartyBody: "Este aplicativo usa o RapidAPI para analisar conteúdo do Instagram. Consulte a Política de Privacidade da RapidAPI.",
+        thirdPartyBody: "Este aplicativo utiliza os seguintes serviços de terceiros, cada um com sua própria política de privacidade:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "para análise de conteúdo do Instagram", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "para análise de uso anônimo", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "para relatórios de falhas", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "Segurança dos Dados",
+        securityBody: "Levamos a segurança dos dados a sério. Todas as comunicações de rede utilizam criptografia HTTPS. Os arquivos baixados são armazenados no armazenamento local do seu dispositivo. O aplicativo não faz backup dos dados do usuário em serviços de nuvem (android:allowBackup está desativado).",
+        dataRetentionHeading: "Retenção e Exclusão de Dados",
+        dataRetentionBody: "Os dados locais (histórico de downloads, miniaturas em cache) são armazenados apenas no seu dispositivo. Você pode excluí-los a qualquer momento limpando os dados do aplicativo nas configurações do sistema ou desinstalando o aplicativo. Os dados analíticos anônimos coletados pelo Firebase são retidos por 14 meses (período padrão do Google), após os quais são automaticamente excluídos.",
+        userRightsHeading: "Seus Direitos",
+        userRightsIntro: "De acordo com as leis de proteção de dados aplicáveis (incluindo o GDPR para usuários da UE/EEE), você pode ter os seguintes direitos:",
+        userRightsList: [
+          "Direito de acesso — solicitar uma cópia dos dados que possuímos sobre você",
+          "Direito à exclusão — solicitar a exclusão dos seus dados",
+          "Direito à retificação — solicitar a correção de dados imprecisos",
+          "Direito à restrição de processamento — solicitar a limitação do processamento de dados",
+          "Direito à portabilidade de dados — solicitar seus dados em formato portátil",
+          "Direito de retirar o consentimento — retirar seu consentimento a qualquer momento"
+        ],
+        userRightsOutro: "Para exercer qualquer um desses direitos, entre em contato conosco pelo e-mail listado abaixo. Responderemos em até 30 dias.",
+        childrenHeading: "Privacidade Infantil",
+        childrenBody: "O InsSnap não se destina a crianças menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças menores de 13 anos. Se você é pai, mãe ou responsável e acredita que seu filho nos forneceu informações pessoais, entre em contato conosco e tomaremos medidas para excluir essas informações.",
+        changesHeading: "Alterações nesta Política",
+        changesBody: "Podemos atualizar esta política de privacidade periodicamente. Quando fizermos alterações, atualizaremos a data de \"Última atualização\" no topo desta página. Recomendamos que você revise esta política periodicamente.",
         contactHeading: "Fale Conosco",
-        contactBody: "Se tiver dúvidas, entre em contato: inna.roseli@outlook.com"
+        contactBody: "Se tiver dúvidas sobre esta política de privacidade, entre em contato: inna.roseli@outlook.com"
       },
       "id": {
         title: "Kebijakan Privasi InsSnap",
-        updated: "Terakhir diperbarui: Februari 2026",
+        updated: "Terakhir diperbarui: Maret 2026",
         collectHeading: "Informasi yang Kami Kumpulkan",
-        collectBody: "InsSnap tidak mengumpulkan informasi pribadi apa pun. Aplikasi tidak memerlukan pendaftaran atau login.",
+        collectBody: "InsSnap tidak mengumpulkan informasi identitas pribadi apa pun (seperti nama, email, atau nomor telepon). Aplikasi tidak memerlukan pendaftaran atau login. Namun, kami menggunakan Firebase Analytics untuk mengumpulkan data penggunaan anonim (lihat bagian \"Analitik & Laporan Kerusakan\" di bawah).",
         inputHeading: "Konten yang Anda Berikan",
-        inputBody: "Tautan Instagram yang Anda tempel dikirim ke layanan parsing pihak ketiga (RapidAPI) untuk mendapatkan URL media yang dapat diunduh. Kami tidak menyimpan tautan tersebut atau membagikannya ke pihak lain.",
+        inputBody: "Tautan Instagram yang Anda tempel dikirim ke layanan parsing pihak ketiga (RapidAPI) untuk mendapatkan URL media yang dapat diunduh. Kami tidak menyimpan tautan tersebut di server kami atau membagikannya ke pihak lain.",
         downloadHeading: "File yang Diunduh",
         downloadBody: "Semua file yang diunduh hanya disimpan di perangkat lokal Anda, dan kami tidak dapat mengaksesnya.",
+        analyticsHeading: "Analitik & Laporan Kerusakan",
+        analyticsBody: "Kami menggunakan Firebase Analytics dan Firebase Crashlytics untuk meningkatkan kualitas aplikasi. Layanan ini mengumpulkan data anonim termasuk: peristiwa penggunaan aplikasi (seperti klik tombol dan frekuensi penggunaan fitur), informasi perangkat (model perangkat, versi OS, pengaturan bahasa), serta log kerusakan dan laporan error. Data ini bersifat anonim dan tidak dapat digunakan untuk mengidentifikasi Anda secara pribadi. Anda dapat membatasi pengumpulan data dengan menonaktifkan \"Penggunaan & diagnostik\" di pengaturan perangkat Android Anda.",
+        adIdHeading: "Pengidentifikasi Iklan",
+        adIdBody: "Aplikasi ini mungkin mengakses pengidentifikasi iklan perangkat Anda (Google Advertising ID) untuk tujuan atribusi analitik. Pengidentifikasi ini tidak mengumpulkan informasi pribadi Anda. Anda dapat mengatur ulang atau menonaktifkan ID iklan kapan saja di Setelan > Google > Iklan.",
         thirdPartyHeading: "Layanan Pihak Ketiga",
-        thirdPartyBody: "Aplikasi ini menggunakan RapidAPI untuk memproses konten Instagram. Silakan lihat Kebijakan Privasi RapidAPI.",
+        thirdPartyBody: "Aplikasi ini menggunakan layanan pihak ketiga berikut, masing-masing dengan kebijakan privasi sendiri:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "untuk mengurai konten Instagram", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "untuk analitik penggunaan anonim", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "untuk laporan kerusakan", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "Keamanan Data",
+        securityBody: "Kami menangani keamanan data dengan serius. Semua komunikasi jaringan menggunakan enkripsi HTTPS. File yang diunduh disimpan di penyimpanan lokal perangkat Anda. Aplikasi tidak mencadangkan data pengguna ke layanan cloud (android:allowBackup dinonaktifkan).",
+        dataRetentionHeading: "Penyimpanan & Penghapusan Data",
+        dataRetentionBody: "Data lokal (riwayat unduhan, thumbnail cache) hanya disimpan di perangkat Anda. Anda dapat menghapusnya kapan saja dengan menghapus data aplikasi di pengaturan sistem atau mencopot aplikasi. Data analitik anonim yang dikumpulkan oleh Firebase disimpan selama 14 bulan (periode retensi default Google), setelah itu dihapus secara otomatis.",
+        userRightsHeading: "Hak Anda",
+        userRightsIntro: "Berdasarkan undang-undang perlindungan data yang berlaku (termasuk GDPR untuk pengguna UE/EEA), Anda mungkin memiliki hak berikut:",
+        userRightsList: [
+          "Hak akses — meminta salinan data yang kami miliki tentang Anda",
+          "Hak penghapusan — meminta penghapusan data Anda",
+          "Hak pembetulan — meminta koreksi data yang tidak akurat",
+          "Hak pembatasan pemrosesan — meminta pembatasan pemrosesan data",
+          "Hak portabilitas data — meminta data Anda dalam format portabel",
+          "Hak menarik persetujuan — menarik persetujuan Anda kapan saja"
+        ],
+        userRightsOutro: "Untuk menggunakan hak-hak ini, hubungi kami melalui email yang tercantum di bawah. Kami akan merespons dalam 30 hari.",
+        childrenHeading: "Privasi Anak",
+        childrenBody: "InsSnap tidak ditujukan untuk anak-anak di bawah 13 tahun. Kami tidak secara sengaja mengumpulkan informasi pribadi dari anak-anak di bawah 13 tahun. Jika Anda adalah orang tua atau wali dan yakin anak Anda telah memberikan informasi pribadi kepada kami, silakan hubungi kami dan kami akan mengambil langkah untuk menghapus informasi tersebut.",
+        changesHeading: "Perubahan Kebijakan Ini",
+        changesBody: "Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Saat kami membuat perubahan, kami akan memperbarui tanggal \"Terakhir diperbarui\" di bagian atas halaman ini. Kami menyarankan Anda meninjau kebijakan ini secara berkala.",
         contactHeading: "Hubungi Kami",
-        contactBody: "Jika ada pertanyaan, hubungi: inna.roseli@outlook.com"
+        contactBody: "Jika ada pertanyaan tentang kebijakan privasi ini, hubungi: inna.roseli@outlook.com"
       },
       "es": {
         title: "Política de Privacidad de InsSnap",
-        updated: "Última actualización: febrero de 2026",
+        updated: "Última actualización: marzo de 2026",
         collectHeading: "Información que Recopilamos",
-        collectBody: "InsSnap no recopila información personal. La aplicación no requiere registro ni inicio de sesión.",
+        collectBody: "InsSnap no recopila información de identificación personal (como nombre, correo electrónico o número de teléfono). La aplicación no requiere registro ni inicio de sesión. Sin embargo, utilizamos Firebase Analytics para recopilar datos de uso anónimos (consulta la sección \"Análisis e Informes de Fallos\" a continuación).",
         inputHeading: "Contenido que Proporcionas",
-        inputBody: "Los enlaces de Instagram que pegas se envían a un servicio de análisis de terceros (RapidAPI) para obtener URLs de medios descargables. No almacenamos estos enlaces ni los compartimos con terceros.",
+        inputBody: "Los enlaces de Instagram que pegas se envían a un servicio de análisis de terceros (RapidAPI) para obtener URLs de medios descargables. No almacenamos estos enlaces en nuestros servidores ni los compartimos con terceros.",
         downloadHeading: "Archivos Descargados",
         downloadBody: "Todos los archivos descargados se guardan solo en tu dispositivo local y no podemos acceder a ellos.",
+        analyticsHeading: "Análisis e Informes de Fallos",
+        analyticsBody: "Utilizamos Firebase Analytics y Firebase Crashlytics para mejorar la calidad de la aplicación. Estos servicios recopilan datos anónimos que incluyen: eventos de uso de la aplicación (como clics en botones y frecuencia de uso de funciones), información del dispositivo (modelo, versión del SO, configuración de idioma) y registros de fallos e informes de errores. Estos datos son anónimos y no pueden usarse para identificarte personalmente. Puedes limitar la recopilación de datos desactivando \"Uso y diagnóstico\" en la configuración de tu dispositivo Android.",
+        adIdHeading: "Identificador de Publicidad",
+        adIdBody: "La aplicación puede acceder al identificador de publicidad de tu dispositivo (Google Advertising ID) con fines de atribución analítica. Este identificador no recopila tu información personal. Puedes restablecer o desactivar tu ID de publicidad en cualquier momento en Configuración > Google > Anuncios.",
         thirdPartyHeading: "Servicios de Terceros",
-        thirdPartyBody: "Esta aplicación usa RapidAPI para analizar contenido de Instagram. Consulta la Política de Privacidad de RapidAPI.",
+        thirdPartyBody: "Esta aplicación utiliza los siguientes servicios de terceros, cada uno con su propia política de privacidad:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "para analizar contenido de Instagram", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "para análisis de uso anónimo", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "para informes de fallos", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "Seguridad de los Datos",
+        securityBody: "Nos tomamos en serio la seguridad de los datos. Todas las comunicaciones de red utilizan cifrado HTTPS. Los archivos descargados se almacenan en el almacenamiento local de tu dispositivo. La aplicación no realiza copias de seguridad de los datos del usuario en servicios en la nube (android:allowBackup está desactivado).",
+        dataRetentionHeading: "Retención y Eliminación de Datos",
+        dataRetentionBody: "Los datos locales (historial de descargas, miniaturas en caché) se almacenan solo en tu dispositivo. Puedes eliminarlos en cualquier momento borrando los datos de la aplicación en la configuración del sistema o desinstalando la aplicación. Los datos analíticos anónimos recopilados por Firebase se conservan durante 14 meses (período predeterminado de Google), después de lo cual se eliminan automáticamente.",
+        userRightsHeading: "Tus Derechos",
+        userRightsIntro: "Según las leyes de protección de datos aplicables (incluido el RGPD para usuarios de la UE/EEE), puedes tener los siguientes derechos:",
+        userRightsList: [
+          "Derecho de acceso — solicitar una copia de los datos que tenemos sobre ti",
+          "Derecho de supresión — solicitar la eliminación de tus datos",
+          "Derecho de rectificación — solicitar la corrección de datos inexactos",
+          "Derecho a la limitación del tratamiento — solicitar que limitemos el procesamiento de datos",
+          "Derecho a la portabilidad de datos — solicitar tus datos en un formato portable",
+          "Derecho a retirar el consentimiento — retirar tu consentimiento en cualquier momento"
+        ],
+        userRightsOutro: "Para ejercer cualquiera de estos derechos, contáctanos en el correo electrónico que aparece abajo. Responderemos en un plazo de 30 días.",
+        childrenHeading: "Privacidad Infantil",
+        childrenBody: "InsSnap no está destinado a niños menores de 13 años. No recopilamos intencionalmente información personal de niños menores de 13 años. Si eres padre, madre o tutor y crees que tu hijo nos ha proporcionado información personal, contáctanos y tomaremos medidas para eliminar dicha información.",
+        changesHeading: "Cambios en esta Política",
+        changesBody: "Podemos actualizar esta política de privacidad periódicamente. Cuando hagamos cambios, actualizaremos la fecha de \"Última actualización\" en la parte superior de esta página. Te recomendamos revisar esta política periódicamente.",
         contactHeading: "Contáctanos",
-        contactBody: "Si tienes preguntas, contacta a: inna.roseli@outlook.com"
+        contactBody: "Si tienes preguntas sobre esta política de privacidad, contacta a: inna.roseli@outlook.com"
       },
       "hi": {
         title: "InsSnap गोपनीयता नीति",
-        updated: "अंतिम अपडेट: फ़रवरी 2026",
+        updated: "अंतिम अपडेट: मार्च 2026",
         collectHeading: "हम कौन सी जानकारी एकत्र करते हैं",
-        collectBody: "InsSnap कोई व्यक्तिगत जानकारी एकत्र नहीं करता है। ऐप में रजिस्ट्रेशन या लॉगिन की आवश्यकता नहीं है।",
+        collectBody: "InsSnap कोई व्यक्तिगत पहचान योग्य जानकारी (जैसे नाम, ईमेल, या फ़ोन नंबर) एकत्र नहीं करता। ऐप में रजिस्ट्रेशन या लॉगिन की आवश्यकता नहीं है। हालाँकि, हम अनाम उपयोग डेटा एकत्र करने के लिए Firebase Analytics का उपयोग करते हैं (नीचे \"विश्लेषण और क्रैश रिपोर्टिंग\" अनुभाग देखें)।",
         inputHeading: "आपके द्वारा प्रदान की गई सामग्री",
-        inputBody: "आपके द्वारा पेस्ट किए गए Instagram लिंक मीडिया डाउनलोड URL प्राप्त करने के लिए तृतीय-पक्ष पार्सिंग सेवा (RapidAPI) को भेजे जाते हैं। हम इन लिंक को संग्रहीत नहीं करते और न ही किसी अन्य पक्ष के साथ साझा करते हैं।",
+        inputBody: "आपके द्वारा पेस्ट किए गए Instagram लिंक डाउनलोड योग्य मीडिया URL प्राप्त करने के लिए तृतीय-पक्ष पार्सिंग सेवा (RapidAPI) को भेजे जाते हैं। हम इन लिंक को अपने सर्वर पर संग्रहीत नहीं करते और न ही किसी अन्य पक्ष के साथ साझा करते हैं।",
         downloadHeading: "डाउनलोड की गई फाइलें",
         downloadBody: "सभी डाउनलोड की गई फाइलें केवल आपके स्थानीय डिवाइस पर सहेजी जाती हैं, और हम उन्हें एक्सेस नहीं कर सकते।",
+        analyticsHeading: "विश्लेषण और क्रैश रिपोर्टिंग",
+        analyticsBody: "हम ऐप की गुणवत्ता सुधारने के लिए Firebase Analytics और Firebase Crashlytics का उपयोग करते हैं। ये सेवाएँ अनाम डेटा एकत्र करती हैं जिसमें शामिल हैं: ऐप उपयोग इवेंट (जैसे बटन क्लिक और सुविधा उपयोग आवृत्ति), डिवाइस जानकारी (डिवाइस मॉडल, OS संस्करण, भाषा सेटिंग), और क्रैश लॉग और त्रुटि रिपोर्ट। यह डेटा अनाम है और इसका उपयोग आपकी व्यक्तिगत पहचान के लिए नहीं किया जा सकता। आप अपने Android डिवाइस सेटिंग में \"उपयोग और डायग्नोस्टिक्स\" अक्षम करके डेटा संग्रह सीमित कर सकते हैं।",
+        adIdHeading: "विज्ञापन पहचानकर्ता",
+        adIdBody: "ऐप एनालिटिक्स एट्रिब्यूशन उद्देश्यों के लिए आपके डिवाइस के विज्ञापन पहचानकर्ता (Google Advertising ID) तक पहुँच सकता है। यह पहचानकर्ता आपकी व्यक्तिगत जानकारी एकत्र नहीं करता। आप किसी भी समय सेटिंग > Google > विज्ञापन में अपना विज्ञापन ID रीसेट या अक्षम कर सकते हैं।",
         thirdPartyHeading: "तृतीय-पक्ष सेवाएं",
-        thirdPartyBody: "यह ऐप Instagram सामग्री पार्स करने के लिए RapidAPI का उपयोग करता है। कृपया RapidAPI की गोपनीयता नीति देखें।",
+        thirdPartyBody: "यह ऐप निम्नलिखित तृतीय-पक्ष सेवाओं का उपयोग करता है, प्रत्येक की अपनी गोपनीयता नीति है:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "Instagram सामग्री पार्सिंग के लिए", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "अनाम उपयोग विश्लेषण के लिए", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "क्रैश रिपोर्टिंग के लिए", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "डेटा सुरक्षा",
+        securityBody: "हम डेटा सुरक्षा को गंभीरता से लेते हैं। सभी नेटवर्क संचार HTTPS एन्क्रिप्शन का उपयोग करते हैं। डाउनलोड की गई फाइलें आपके डिवाइस के स्थानीय स्टोरेज में संग्रहीत होती हैं। ऐप उपयोगकर्ता डेटा का क्लाउड सेवाओं में बैकअप नहीं लेता (android:allowBackup अक्षम है)।",
+        dataRetentionHeading: "डेटा प्रतिधारण और विलोपन",
+        dataRetentionBody: "स्थानीय डेटा (डाउनलोड इतिहास, कैश्ड थंबनेल) केवल आपके डिवाइस पर संग्रहीत होता है। आप सिस्टम सेटिंग में ऐप डेटा साफ़ करके या ऐप अनइंस्टॉल करके इसे कभी भी हटा सकते हैं। Firebase द्वारा एकत्र किया गया अनाम एनालिटिक्स डेटा 14 महीने (Google का डिफ़ॉल्ट प्रतिधारण अवधि) तक रखा जाता है, उसके बाद स्वचालित रूप से हटा दिया जाता है।",
+        userRightsHeading: "आपके अधिकार",
+        userRightsIntro: "लागू डेटा सुरक्षा कानूनों (EU/EEA उपयोगकर्ताओं के लिए GDPR सहित) के तहत, आपके पास निम्नलिखित अधिकार हो सकते हैं:",
+        userRightsList: [
+          "पहुँच का अधिकार — हमारे पास आपके बारे में मौजूद डेटा की प्रति का अनुरोध करें",
+          "विलोपन का अधिकार — अपने डेटा को हटाने का अनुरोध करें",
+          "सुधार का अधिकार — गलत डेटा में सुधार का अनुरोध करें",
+          "प्रसंस्करण प्रतिबंध का अधिकार — डेटा प्रसंस्करण को सीमित करने का अनुरोध करें",
+          "डेटा पोर्टेबिलिटी का अधिकार — अपने डेटा को पोर्टेबल प्रारूप में अनुरोध करें",
+          "सहमति वापस लेने का अधिकार — किसी भी समय अपनी सहमति वापस लें"
+        ],
+        userRightsOutro: "इन अधिकारों का उपयोग करने के लिए, नीचे सूचीबद्ध ईमेल पर हमसे संपर्क करें। हम 30 दिनों के भीतर जवाब देंगे।",
+        childrenHeading: "बच्चों की गोपनीयता",
+        childrenBody: "InsSnap 13 वर्ष से कम उम्र के बच्चों के लिए नहीं है। हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते। यदि आप माता-पिता या अभिभावक हैं और मानते हैं कि आपके बच्चे ने हमें व्यक्तिगत जानकारी प्रदान की है, तो कृपया हमसे संपर्क करें और हम उस जानकारी को हटाने के कदम उठाएंगे।",
+        changesHeading: "इस नीति में परिवर्तन",
+        changesBody: "हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं। जब हम परिवर्तन करते हैं, तो हम इस पृष्ठ के शीर्ष पर \"अंतिम अपडेट\" तिथि अपडेट करेंगे। हम अनुशंसा करते हैं कि आप समय-समय पर इस नीति की समीक्षा करें।",
         contactHeading: "संपर्क करें",
-        contactBody: "यदि आपके कोई प्रश्न हैं, तो संपर्क करें: inna.roseli@outlook.com"
+        contactBody: "यदि इस गोपनीयता नीति के बारे में कोई प्रश्न हैं, तो संपर्क करें: inna.roseli@outlook.com"
       },
       "ja": {
         title: "InsSnap プライバシーポリシー",
-        updated: "最終更新日: 2026年2月",
+        updated: "最終更新日: 2026年3月",
         collectHeading: "収集する情報",
-        collectBody: "InsSnap は個人情報を一切収集しません。アプリの登録やログインは不要です。",
+        collectBody: "InsSnap は個人を特定できる情報（氏名、メールアドレス、電話番号など）を一切収集しません。アプリの登録やログインは不要です。ただし、匿名の利用データを収集するために Firebase Analytics を使用しています（詳細は下記「分析とクラッシュレポート」をご覧ください）。",
         inputHeading: "入力された内容",
-        inputBody: "貼り付けた Instagram リンクは、ダウンロード可能なメディア URL を取得するために第三者解析サービス（RapidAPI）へ送信されます。これらのリンクを保存したり、他者と共有したりすることはありません。",
+        inputBody: "貼り付けた Instagram リンクは、ダウンロード可能なメディア URL を取得するために第三者解析サービス（RapidAPI）へ送信されます。これらのリンクをサーバーに保存したり、他者と共有したりすることはありません。",
         downloadHeading: "ダウンロードされたファイル",
         downloadBody: "ダウンロードされたファイルはすべて端末内にのみ保存され、当社はアクセスできません。",
+        analyticsHeading: "分析とクラッシュレポート",
+        analyticsBody: "アプリの品質向上のために Firebase Analytics と Firebase Crashlytics を使用しています。これらのサービスが収集する匿名データには、アプリ使用イベント（ボタンのクリックや機能の使用頻度など）、端末情報（端末モデル、OS バージョン、言語設定）、クラッシュログとエラーレポートが含まれます。これらのデータは匿名であり、個人を特定するために使用することはできません。Android 端末の設定で「使用状況と診断」を無効にすることで、データ収集を制限できます。",
+        adIdHeading: "広告識別子",
+        adIdBody: "本アプリは、分析アトリビューション目的で端末の広告識別子（Google 広告 ID）にアクセスする場合があります。この識別子はお客様の個人情報を収集しません。設定 > Google > 広告 で、いつでも広告 ID をリセットまたは無効にできます。",
         thirdPartyHeading: "第三者サービス",
-        thirdPartyBody: "本アプリは Instagram コンテンツ解析のために RapidAPI を利用します。RapidAPI のプライバシーポリシーをご確認ください。",
+        thirdPartyBody: "本アプリは以下の第三者サービスを利用しており、それぞれ独自のプライバシーポリシーがあります：",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "Instagram コンテンツの解析", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "匿名利用分析", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "クラッシュレポート", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "データセキュリティ",
+        securityBody: "当社はデータセキュリティを重視しています。すべてのネットワーク通信は HTTPS 暗号化を使用しています。ダウンロードされたファイルは端末のローカルストレージに保存されます。アプリはユーザーデータをクラウドサービスにバックアップしません（android:allowBackup は無効）。",
+        dataRetentionHeading: "データの保持と削除",
+        dataRetentionBody: "ローカルデータ（ダウンロード履歴、キャッシュされたサムネイル）は端末にのみ保存されます。システム設定でアプリデータを消去するか、アプリをアンインストールすることでいつでも削除できます。Firebase が収集した匿名分析データは 14 か月間（Google のデフォルト保持期間）保持され、その後自動的に削除されます。",
+        userRightsHeading: "お客様の権利",
+        userRightsIntro: "適用されるデータ保護法（EU/EEA ユーザー向けの GDPR を含む）に基づき、以下の権利を有する場合があります：",
+        userRightsList: [
+          "アクセス権 — 当社が保有するお客様のデータのコピーを要求する",
+          "削除権 — お客様のデータの削除を要求する",
+          "訂正権 — 不正確なデータの修正を要求する",
+          "処理制限権 — データ処理の制限を要求する",
+          "データポータビリティ権 — ポータブルな形式でデータを要求する",
+          "同意撤回権 — いつでも同意を撤回する"
+        ],
+        userRightsOutro: "これらの権利を行使するには、下記のメールアドレスまでご連絡ください。30 日以内に回答いたします。",
+        childrenHeading: "子どものプライバシー",
+        childrenBody: "InsSnap は 13 歳未満の子どもを対象としていません。13 歳未満の子どもから故意に個人情報を収集することはありません。保護者の方で、お子様が個人情報を当社に提供したと思われる場合は、ご連絡ください。該当情報の削除措置を講じます。",
+        changesHeading: "本ポリシーの変更",
+        changesBody: "本プライバシーポリシーは随時更新される場合があります。変更を行った場合、本ページ上部の「最終更新日」を更新します。定期的に本ポリシーをご確認いただくことをお勧めします。",
         contactHeading: "お問い合わせ",
-        contactBody: "ご質問がある場合: inna.roseli@outlook.com"
+        contactBody: "本プライバシーポリシーについてご質問がある場合: inna.roseli@outlook.com"
       },
       "ar": {
         title: "سياسة خصوصية InsSnap",
-        updated: "آخر تحديث: فبراير 2026",
+        updated: "آخر تحديث: مارس 2026",
         collectHeading: "المعلومات التي نجمعها",
-        collectBody: "لا يجمع InsSnap أي معلومات شخصية. لا يتطلب التطبيق التسجيل أو تسجيل الدخول.",
+        collectBody: "لا يجمع InsSnap أي معلومات تعريف شخصية (مثل الاسم أو البريد الإلكتروني أو رقم الهاتف). لا يتطلب التطبيق التسجيل أو تسجيل الدخول. ومع ذلك، نستخدم Firebase Analytics لجمع بيانات استخدام مجهولة الهوية (راجع قسم \"التحليلات وتقارير الأعطال\" أدناه).",
         inputHeading: "المحتوى الذي تقدمه",
-        inputBody: "يتم إرسال روابط Instagram التي تلصقها إلى خدمة تحليل تابعة لجهة خارجية (RapidAPI) للحصول على روابط وسائط قابلة للتنزيل. نحن لا نخزن هذه الروابط ولا نشاركها مع أي طرف آخر.",
+        inputBody: "يتم إرسال روابط Instagram التي تلصقها إلى خدمة تحليل تابعة لجهة خارجية (RapidAPI) للحصول على روابط وسائط قابلة للتنزيل. نحن لا نخزن هذه الروابط على خوادمنا ولا نشاركها مع أي طرف آخر.",
         downloadHeading: "الملفات التي تم تنزيلها",
         downloadBody: "يتم حفظ جميع الملفات التي تم تنزيلها على جهازك المحلي فقط، ولا يمكننا الوصول إليها.",
+        analyticsHeading: "التحليلات وتقارير الأعطال",
+        analyticsBody: "نستخدم Firebase Analytics و Firebase Crashlytics لتحسين جودة التطبيق. تجمع هذه الخدمات بيانات مجهولة الهوية تشمل: أحداث استخدام التطبيق (مثل النقرات على الأزرار وتكرار استخدام الميزات)، ومعلومات الجهاز (طراز الجهاز، إصدار نظام التشغيل، إعدادات اللغة)، وسجلات الأعطال وتقارير الأخطاء. هذه البيانات مجهولة ولا يمكن استخدامها لتحديد هويتك شخصياً. يمكنك تقييد جمع البيانات عن طريق تعطيل \"الاستخدام والتشخيص\" في إعدادات جهاز Android.",
+        adIdHeading: "معرّف الإعلانات",
+        adIdBody: "قد يصل التطبيق إلى معرّف الإعلانات الخاص بجهازك (Google Advertising ID) لأغراض إسناد التحليلات. لا يجمع هذا المعرّف معلوماتك الشخصية. يمكنك إعادة تعيين أو تعطيل معرّف الإعلانات في أي وقت من الإعدادات > Google > الإعلانات.",
         thirdPartyHeading: "خدمات الطرف الثالث",
-        thirdPartyBody: "يستخدم هذا التطبيق RapidAPI لتحليل محتوى Instagram. يرجى مراجعة سياسة خصوصية RapidAPI.",
+        thirdPartyBody: "يستخدم هذا التطبيق خدمات الطرف الثالث التالية، ولكل منها سياسة خصوصية خاصة:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "لتحليل محتوى Instagram", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "للتحليلات المجهولة", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "لتقارير الأعطال", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "أمان البيانات",
+        securityBody: "نأخذ أمان البيانات على محمل الجد. تستخدم جميع اتصالات الشبكة تشفير HTTPS. يتم تخزين الملفات المنزلة في التخزين المحلي لجهازك. لا يقوم التطبيق بنسخ بيانات المستخدم احتياطياً إلى الخدمات السحابية (android:allowBackup معطل).",
+        dataRetentionHeading: "الاحتفاظ بالبيانات وحذفها",
+        dataRetentionBody: "البيانات المحلية (سجل التنزيلات، الصور المصغرة المخزنة مؤقتاً) مخزنة فقط على جهازك. يمكنك حذفها في أي وقت عن طريق مسح بيانات التطبيق في إعدادات النظام أو إلغاء تثبيت التطبيق. يتم الاحتفاظ ببيانات التحليلات المجهولة التي يجمعها Firebase لمدة 14 شهراً (فترة الاحتفاظ الافتراضية من Google)، وبعد ذلك يتم حذفها تلقائياً.",
+        userRightsHeading: "حقوقك",
+        userRightsIntro: "بموجب قوانين حماية البيانات المعمول بها (بما في ذلك GDPR لمستخدمي الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية)، قد تتمتع بالحقوق التالية:",
+        userRightsList: [
+          "حق الوصول — طلب نسخة من البيانات التي نحتفظ بها عنك",
+          "حق الحذف — طلب حذف بياناتك",
+          "حق التصحيح — طلب تصحيح البيانات غير الدقيقة",
+          "حق تقييد المعالجة — طلب تقييد معالجة البيانات",
+          "حق نقل البيانات — طلب بياناتك بتنسيق قابل للنقل",
+          "حق سحب الموافقة — سحب موافقتك في أي وقت"
+        ],
+        userRightsOutro: "لممارسة أي من هذه الحقوق، يرجى التواصل معنا عبر البريد الإلكتروني المدرج أدناه. سنرد خلال 30 يوماً.",
+        childrenHeading: "خصوصية الأطفال",
+        childrenBody: "InsSnap غير مخصص للأطفال دون سن 13 عاماً. نحن لا نجمع عن عمد معلومات شخصية من الأطفال دون 13 عاماً. إذا كنت والداً أو وصياً وتعتقد أن طفلك قدم لنا معلومات شخصية، يرجى التواصل معنا وسنتخذ خطوات لحذف هذه المعلومات.",
+        changesHeading: "التغييرات على هذه السياسة",
+        changesBody: "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. عند إجراء تغييرات، سنقوم بتحديث تاريخ \"آخر تحديث\" في أعلى هذه الصفحة. نوصي بمراجعة هذه السياسة بشكل دوري.",
         contactHeading: "اتصل بنا",
-        contactBody: "إذا كانت لديك أي أسئلة، تواصل معنا: inna.roseli@outlook.com"
+        contactBody: "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، تواصل معنا: inna.roseli@outlook.com"
       },
       "ko": {
         title: "InsSnap 개인정보처리방침",
-        updated: "최종 업데이트: 2026년 2월",
+        updated: "최종 업데이트: 2026년 3월",
         collectHeading: "수집하는 정보",
-        collectBody: "InsSnap은 개인 정보를 수집하지 않습니다. 앱은 회원가입이나 로그인이 필요하지 않습니다.",
+        collectBody: "InsSnap은 개인 식별 정보(이름, 이메일, 전화번호 등)를 수집하지 않습니다. 앱은 회원가입이나 로그인이 필요하지 않습니다. 다만, 익명 사용 데이터를 수집하기 위해 Firebase Analytics를 사용합니다(아래 \"분석 및 충돌 보고\" 섹션 참조).",
         inputHeading: "사용자가 제공하는 콘텐츠",
-        inputBody: "붙여넣은 Instagram 링크는 다운로드 가능한 미디어 URL을 얻기 위해 타사 분석 서비스(RapidAPI)로 전송됩니다. 이러한 링크를 저장하거나 다른 당사자와 공유하지 않습니다.",
+        inputBody: "붙여넣은 Instagram 링크는 다운로드 가능한 미디어 URL을 얻기 위해 타사 분석 서비스(RapidAPI)로 전송됩니다. 이러한 링크를 서버에 저장하거나 다른 당사자와 공유하지 않습니다.",
         downloadHeading: "저장된 파일",
         downloadBody: "저장된 모든 파일은 사용자의 로컬 기기에만 저장되며, 당사는 접근할 수 없습니다.",
+        analyticsHeading: "분석 및 충돌 보고",
+        analyticsBody: "앱 품질 향상을 위해 Firebase Analytics와 Firebase Crashlytics를 사용합니다. 이 서비스들은 다음과 같은 익명 데이터를 수집합니다: 앱 사용 이벤트(버튼 클릭 및 기능 사용 빈도 등), 기기 정보(기기 모델, OS 버전, 언어 설정), 충돌 로그 및 오류 보고서. 이 데이터는 익명이며 개인을 식별하는 데 사용할 수 없습니다. Android 기기 설정에서 \"사용량 및 진단\"을 비활성화하여 데이터 수집을 제한할 수 있습니다.",
+        adIdHeading: "광고 식별자",
+        adIdBody: "앱은 분석 기여도 목적으로 기기의 광고 식별자(Google 광고 ID)에 접근할 수 있습니다. 이 식별자는 개인 정보를 수집하지 않습니다. 설정 > Google > 광고에서 언제든지 광고 ID를 재설정하거나 비활성화할 수 있습니다.",
         thirdPartyHeading: "타사 서비스",
-        thirdPartyBody: "이 앱은 Instagram 콘텐츠 분석을 위해 RapidAPI를 사용합니다. RapidAPI 개인정보처리방침을 확인해 주세요.",
+        thirdPartyBody: "이 앱은 다음 타사 서비스를 사용하며, 각각 자체 개인정보처리방침이 있습니다:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "Instagram 콘텐츠 분석용", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "익명 사용 분석용", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "충돌 보고용", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "데이터 보안",
+        securityBody: "당사는 데이터 보안을 중요하게 생각합니다. 모든 네트워크 통신은 HTTPS 암호화를 사용합니다. 다운로드된 파일은 기기의 로컬 저장소에 저장됩니다. 앱은 사용자 데이터를 클라우드 서비스에 백업하지 않습니다(android:allowBackup 비활성화).",
+        dataRetentionHeading: "데이터 보존 및 삭제",
+        dataRetentionBody: "로컬 데이터(다운로드 기록, 캐시된 썸네일)는 기기에만 저장됩니다. 시스템 설정에서 앱 데이터를 삭제하거나 앱을 제거하여 언제든지 삭제할 수 있습니다. Firebase가 수집한 익명 분석 데이터는 14개월간(Google 기본 보존 기간) 보존되며, 이후 자동으로 삭제됩니다.",
+        userRightsHeading: "귀하의 권리",
+        userRightsIntro: "적용 가능한 데이터 보호법(EU/EEA 사용자를 위한 GDPR 포함)에 따라 다음과 같은 권리를 가질 수 있습니다:",
+        userRightsList: [
+          "접근권 — 당사가 보유한 귀하의 데이터 사본 요청",
+          "삭제권 — 귀하의 데이터 삭제 요청",
+          "정정권 — 부정확한 데이터의 수정 요청",
+          "처리 제한권 — 데이터 처리 제한 요청",
+          "데이터 이동권 — 이동 가능한 형식으로 데이터 요청",
+          "동의 철회권 — 언제든지 동의 철회"
+        ],
+        userRightsOutro: "이러한 권리를 행사하려면 아래 이메일로 연락해 주세요. 30일 이내에 답변 드리겠습니다.",
+        childrenHeading: "아동 개인정보 보호",
+        childrenBody: "InsSnap은 13세 미만 아동을 대상으로 하지 않습니다. 13세 미만 아동의 개인 정보를 고의로 수집하지 않습니다. 부모 또는 보호자로서 자녀가 개인 정보를 제공했다고 생각되면 연락해 주시면 해당 정보를 삭제하겠습니다.",
+        changesHeading: "본 방침의 변경",
+        changesBody: "본 개인정보처리방침은 수시로 업데이트될 수 있습니다. 변경 시 이 페이지 상단의 \"최종 업데이트\" 날짜를 갱신합니다. 정기적으로 본 방침을 확인하시기 바랍니다.",
         contactHeading: "문의하기",
-        contactBody: "질문이 있으시면 연락해 주세요: inna.roseli@outlook.com"
+        contactBody: "본 개인정보처리방침에 대한 질문이 있으시면 연락해 주세요: inna.roseli@outlook.com"
       },
       "tr": {
         title: "InsSnap Gizlilik Politikası",
-        updated: "Son güncelleme: Şubat 2026",
+        updated: "Son güncelleme: Mart 2026",
         collectHeading: "Topladığımız Bilgiler",
-        collectBody: "InsSnap herhangi bir kişisel bilgi toplamaz. Uygulama kayıt veya giriş gerektirmez.",
+        collectBody: "InsSnap herhangi bir kişisel tanımlama bilgisi (ad, e-posta veya telefon numarası gibi) toplamaz. Uygulama kayıt veya giriş gerektirmez. Ancak, anonim kullanım verileri toplamak için Firebase Analytics kullanıyoruz (aşağıdaki \"Analitik ve Çökme Raporlama\" bölümüne bakın).",
         inputHeading: "Sağladığınız İçerik",
-        inputBody: "Yapıştırdığınız Instagram bağlantıları, indirilebilir medya URL'lerini almak için üçüncü taraf bir ayrıştırma hizmetine (RapidAPI) gönderilir. Bu bağlantıları saklamaz veya başka taraflarla paylaşmayız.",
+        inputBody: "Yapıştırdığınız Instagram bağlantıları, indirilebilir medya URL'lerini almak için üçüncü taraf bir ayrıştırma hizmetine (RapidAPI) gönderilir. Bu bağlantıları sunucularımızda saklamaz veya başka taraflarla paylaşmayız.",
         downloadHeading: "İndirilen Dosyalar",
         downloadBody: "İndirilen tüm dosyalar yalnızca yerel cihazınızda saklanır ve bunlara erişemeyiz.",
+        analyticsHeading: "Analitik ve Çökme Raporlama",
+        analyticsBody: "Uygulama kalitesini artırmak için Firebase Analytics ve Firebase Crashlytics kullanıyoruz. Bu hizmetler şu anonim verileri toplar: uygulama kullanım olayları (düğme tıklamaları ve özellik kullanım sıklığı gibi), cihaz bilgileri (cihaz modeli, işletim sistemi sürümü, dil ayarları) ve çökme günlükleri ile hata raporları. Bu veriler anonimdir ve sizi kişisel olarak tanımlamak için kullanılamaz. Android cihaz ayarlarında \"Kullanım ve tanılama\"yı devre dışı bırakarak veri toplamayı sınırlayabilirsiniz.",
+        adIdHeading: "Reklam Tanımlayıcısı",
+        adIdBody: "Uygulama, analitik atıf amacıyla cihazınızın reklam tanımlayıcısına (Google Advertising ID) erişebilir. Bu tanımlayıcı kişisel bilgilerinizi toplamaz. Reklam kimliğinizi istediğiniz zaman Ayarlar > Google > Reklamlar bölümünden sıfırlayabilir veya devre dışı bırakabilirsiniz.",
         thirdPartyHeading: "Üçüncü Taraf Hizmetleri",
-        thirdPartyBody: "Bu uygulama, Instagram içeriğini ayrıştırmak için RapidAPI kullanır. Lütfen RapidAPI Gizlilik Politikasını inceleyin.",
+        thirdPartyBody: "Bu uygulama, her biri kendi gizlilik politikasına sahip aşağıdaki üçüncü taraf hizmetlerini kullanır:",
+        thirdPartyList: [
+          { name: "RapidAPI", desc: "Instagram içeriğini ayrıştırmak için", url: "https://rapidapi.com/privacy" },
+          { name: "Firebase Analytics", desc: "anonim kullanım analitiği için", url: "https://firebase.google.com/support/privacy" },
+          { name: "Firebase Crashlytics", desc: "çökme raporlama için", url: "https://firebase.google.com/support/privacy" }
+        ],
+        securityHeading: "Veri Güvenliği",
+        securityBody: "Veri güvenliğini ciddiye alıyoruz. Tüm ağ iletişimleri HTTPS şifrelemesi kullanır. İndirilen dosyalar cihazınızın yerel depolama alanında saklanır. Uygulama, kullanıcı verilerini bulut hizmetlerine yedeklemez (android:allowBackup devre dışı).",
+        dataRetentionHeading: "Veri Saklama ve Silme",
+        dataRetentionBody: "Yerel veriler (indirme geçmişi, önbelleğe alınmış küçük resimler) yalnızca cihazınızda saklanır. Sistem ayarlarında uygulama verilerini temizleyerek veya uygulamayı kaldırarak istediğiniz zaman silebilirsiniz. Firebase tarafından toplanan anonim analitik verileri 14 ay (Google'ın varsayılan saklama süresi) boyunca saklanır, ardından otomatik olarak silinir.",
+        userRightsHeading: "Haklarınız",
+        userRightsIntro: "Geçerli veri koruma yasaları (AB/AEA kullanıcıları için GDPR dahil) kapsamında aşağıdaki haklara sahip olabilirsiniz:",
+        userRightsList: [
+          "Erişim hakkı — hakkınızda tuttuğumuz verilerin bir kopyasını talep etme",
+          "Silme hakkı — verilerinizin silinmesini talep etme",
+          "Düzeltme hakkı — yanlış verilerin düzeltilmesini talep etme",
+          "İşlemeyi kısıtlama hakkı — veri işlemenin sınırlandırılmasını talep etme",
+          "Veri taşınabilirliği hakkı — verilerinizi taşınabilir bir formatta talep etme",
+          "Onayı geri çekme hakkı — istediğiniz zaman onayınızı geri çekme"
+        ],
+        userRightsOutro: "Bu haklardan herhangi birini kullanmak için aşağıdaki e-posta adresinden bizimle iletişime geçin. 30 gün içinde yanıt vereceğiz.",
+        childrenHeading: "Çocukların Gizliliği",
+        childrenBody: "InsSnap 13 yaşın altındaki çocuklara yönelik değildir. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamayız. Ebeveyn veya vasi olarak çocuğunuzun bize kişisel bilgi sağladığına inanıyorsanız, lütfen bizimle iletişime geçin, bu bilgileri silmek için adımlar atacağız.",
+        changesHeading: "Bu Politikadaki Değişiklikler",
+        changesBody: "Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Değişiklik yaptığımızda, bu sayfanın üst kısmındaki \"Son güncelleme\" tarihini güncelleyeceğiz. Bu politikayı düzenli olarak gözden geçirmenizi öneririz.",
         contactHeading: "Bize Ulaşın",
-        contactBody: "Sorularınız için: inna.roseli@outlook.com"
+        contactBody: "Bu gizlilik politikası hakkında sorularınız için: inna.roseli@outlook.com"
       }
     };
 
@@ -293,15 +631,41 @@
       setNodeText("inputBody", policy.inputBody);
       setNodeText("downloadHeading", policy.downloadHeading);
       setNodeText("downloadBody", policy.downloadBody);
-      setNodeText("thirdPartyHeading", policy.thirdPartyHeading);
+      setNodeText("analyticsHeading", policy.analyticsHeading);
+      setNodeText("analyticsBody", policy.analyticsBody);
+      setNodeText("adIdHeading", policy.adIdHeading);
+      setNodeText("adIdBody", policy.adIdBody);
+      setNodeText("securityHeading", policy.securityHeading);
+      setNodeText("securityBody", policy.securityBody);
+      setNodeText("dataRetentionHeading", policy.dataRetentionHeading);
+      setNodeText("dataRetentionBody", policy.dataRetentionBody);
+      setNodeText("childrenHeading", policy.childrenHeading);
+      setNodeText("childrenBody", policy.childrenBody);
+      setNodeText("changesHeading", policy.changesHeading);
+      setNodeText("changesBody", policy.changesBody);
       setNodeText("contactHeading", policy.contactHeading);
       setNodeText("contactBody", policy.contactBody);
 
+      // Third-party services with links
       const thirdPartyNode = document.getElementById("thirdPartyBody");
-      if (thirdPartyNode) {
-        thirdPartyNode.innerHTML =
-          policy.thirdPartyBody +
-          ' <a href="https://rapidapi.com/privacy" target="_blank" rel="noopener noreferrer">RapidAPI Privacy Policy</a>.';
+      if (thirdPartyNode && policy.thirdPartyList) {
+        let html = policy.thirdPartyBody + "<ul>";
+        for (const svc of policy.thirdPartyList) {
+          html += `<li><strong>${svc.name}</strong> — ${svc.desc} (<a href="${svc.url}" target="_blank" rel="noopener noreferrer">${svc.name} Privacy Policy</a>)</li>`;
+        }
+        html += "</ul>";
+        thirdPartyNode.innerHTML = html;
+      }
+
+      // User rights with list
+      const userRightsNode = document.getElementById("userRightsBody");
+      if (userRightsNode && policy.userRightsList) {
+        let html = `<p>${policy.userRightsIntro}</p><ul>`;
+        for (const right of policy.userRightsList) {
+          html += `<li>${right}</li>`;
+        }
+        html += `</ul><p>${policy.userRightsOutro}</p>`;
+        userRightsNode.innerHTML = html;
       }
     }
 
